@@ -4,7 +4,7 @@ import org.joda.time.LocalTime;
 import org.joda.time.ReadablePeriod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import rikf.circuitbreaker.clock.Clock;
+import rikf.clock.Clock;
 
 public class CircuitBreakerStateOpen implements CircuitBreakerState {
 

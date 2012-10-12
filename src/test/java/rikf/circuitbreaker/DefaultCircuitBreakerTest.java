@@ -2,7 +2,7 @@ package rikf.circuitbreaker;
 
 import org.joda.time.Period;
 import org.junit.Test;
-import rikf.circuitbreaker.clock.MockClock;
+import rikf.clock.MockClock;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static rikf.circuitbreaker.CircuitBreakerMatchers.closed;
