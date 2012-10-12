@@ -1,10 +1,10 @@
 package rikf.circuitbreaker;
 
-import clock.Clock;
 import org.joda.time.LocalTime;
 import org.joda.time.ReadablePeriod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import rikf.circuitbreaker.clock.Clock;
 
 public class CircuitBreakerStateOpen implements CircuitBreakerState {
 

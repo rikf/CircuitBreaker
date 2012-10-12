@@ -1,8 +1,8 @@
 package rikf.circuitbreaker;
 
-import clock.Clock;
 import org.joda.time.LocalTime;
 import org.joda.time.ReadablePeriod;
+import rikf.circuitbreaker.clock.Clock;
 
 import java.util.Deque;
 import java.util.concurrent.LinkedBlockingDeque;

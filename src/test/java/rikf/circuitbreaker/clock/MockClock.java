@@ -1,6 +1,5 @@
 package rikf.circuitbreaker.clock;
 
-import clock.Clock;
 import org.joda.time.LocalTime;
 import org.joda.time.Period;
 

@@ -1,4 +1,4 @@
-package clock;
+package rikf.circuitbreaker.clock;
 
 import org.joda.time.LocalTime;
 

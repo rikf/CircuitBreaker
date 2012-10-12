@@ -1,9 +1,9 @@
 package rikf.circuitbreaker;
 
 
-import clock.Clock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import rikf.circuitbreaker.clock.Clock;
 
 /**
  * A standard implementation of the circuit breaker

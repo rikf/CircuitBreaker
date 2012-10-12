@@ -1,6 +1,6 @@
 package rikf.circuitbreaker;
 
-import clock.Clock;
+import rikf.circuitbreaker.clock.Clock;
 
 /**
  * This class is responsible for manufacturing the various states used by the state machine
