@@ -1,5 +1,6 @@
 package rikf.clock;
 
+import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
 
 /**
@@ -7,7 +8,7 @@ import org.joda.time.LocalTime;
  */
 public class SystemClock implements Clock {
     @Override
-    public LocalTime getCurrentTime() {
-        return new LocalTime();
+    public LocalDateTime getCurrentTimestamp() {
+        return new LocalDateTime();
     }
 }

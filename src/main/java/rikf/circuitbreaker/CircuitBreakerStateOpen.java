@@ -1,5 +1,6 @@
 package rikf.circuitbreaker;
 
+import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
 import org.joda.time.ReadablePeriod;
 import org.slf4j.Logger;
@@ -12,18 +13,18 @@ public class CircuitBreakerStateOpen implements CircuitBreakerState {
 
 
     private final Clock clock;
-    private LocalTime trippedTimestamp;
-    private LocalTime earliestTimeToAttemptCircuitClose;
+    private LocalDateTime trippedTimestamp;
+    private LocalDateTime earliestTimeToAttemptCircuitClose;
 
     public CircuitBreakerStateOpen(Clock clock, ReadablePeriod timeToWaitBeforeRetryingCircuit) {
         this.clock = clock;
-        this.trippedTimestamp = clock.getCurrentTime();
+        this.trippedTimestamp = clock.getCurrentTimestamp();
         this.earliestTimeToAttemptCircuitClose = trippedTimestamp.plus(timeToWaitBeforeRetryingCircuit);
     }
 
     @Override
     public void preExecute(CircuitBreaker circuitBreaker) {
-        if (earliestTimeToAttemptCircuitClose.isBefore(clock.getCurrentTime())) {
+        if (earliestTimeToAttemptCircuitClose.isBefore(clock.getCurrentTimestamp())) {
             circuitBreaker.halfOpen();
         } else {
             logger.info("Circuit breaker [name: " + circuitBreaker.getName() + "] is open will attempt to close circuit after [time: " + earliestTimeToAttemptCircuitClose + "]");

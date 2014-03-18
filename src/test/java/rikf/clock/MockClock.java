@@ -1,14 +1,22 @@
 package rikf.clock;
 
+import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
 import org.joda.time.Period;
 
 public class MockClock implements Clock {
 
-    private LocalTime startTime = new LocalTime();
+    public MockClock(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public MockClock() {
+    }
+
+    private LocalDateTime startTime = new LocalDateTime();
 
     @Override
-    public LocalTime getCurrentTime() {
+    public LocalDateTime getCurrentTimestamp() {
         return startTime;
     }
 

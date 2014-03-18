@@ -1,5 +1,6 @@
 package rikf.circuitbreaker;
 
+import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
 import org.joda.time.ReadablePeriod;
 import rikf.clock.Clock;
@@ -10,7 +11,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class CircuitBreakerStateClosed implements CircuitBreakerState {
 
-    private volatile Deque<LocalTime> failures = new LinkedBlockingDeque<LocalTime>();
+    private volatile Deque<LocalDateTime> failures = new LinkedBlockingDeque<LocalDateTime>();
     private final Clock clock;
     private int numberOfAcceptableFailuresWithinWindow;
     private ReadablePeriod failureWindow;
@@ -32,7 +33,7 @@ public class CircuitBreakerStateClosed implements CircuitBreakerState {
 
     @Override
     public void onExecutionError(CircuitBreaker circuitBreaker) {
-        failures.push(clock.getCurrentTime());
+        failures.push(clock.getCurrentTimestamp());
 
 
         removeFailuresOutsideOfErrorWindow();
@@ -42,7 +43,7 @@ public class CircuitBreakerStateClosed implements CircuitBreakerState {
     }
 
     private void removeFailuresOutsideOfErrorWindow() {
-        final LocalTime cutOffThreshold = clock.getCurrentTime().minus(failureWindow);
+        final LocalDateTime cutOffThreshold = clock.getCurrentTimestamp().minus(failureWindow);
         while (failures.size() > 0 && failures.peekLast().isBefore(cutOffThreshold)) {
             failures.pollLast();
         }
